@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Grocery from './Grocery'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+    state = {
+        items:
+            [
+                {
+                    item: 'orange',
+                    unit: 'lbs',
+                    qty: '54',
+                    isPurchased: false
+                }, {
+                    item: 'milk',
+                    unit: 'lbs',
+                    qty: '3',
+                    isPurchased: false
+                }, {
+                    item: 'apple',
+                    unit: 'lbs',
+                    qty: '3',
+                    isPurchased: false
+                }
+            ]
+    }
+
+
+    addItems = (item) => {
+        this.setState({
+            items:
+                this.state.items.concat(
+                    item
+                )
+        })
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>BUY GROCERIES HERE</h1>
+                <Grocery items={this.state.items} addItems={this.addItems} />
+            </div>
+        )
+    }
+
 }
 
-export default App;
+
+
+
+export default App
